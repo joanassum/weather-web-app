@@ -1,4 +1,4 @@
-package infrastructure
+package weather
 
 import (
 	"encoding/json"

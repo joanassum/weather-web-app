@@ -1,4 +1,4 @@
-package adapters
+package weather
 
 import (
 	"github.com/joanassum/weather-web-app/models"

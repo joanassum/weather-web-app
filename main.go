@@ -10,7 +10,7 @@ import (
 	"sync"
 	"text/template"
 
-	"github.com/joanassum/weather-web-app/infrastructure"
+	"github.com/joanassum/weather-web-app/weather"
 )
 
 // templ represents a single template
@@ -27,7 +27,7 @@ func (t *templateHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		t.templ = template.Must(template.ParseFiles(filepath.Join("templates", t.filename)))
 	})
 
-	info, err := infrastructure.UseOpenWeatherAPI.GetWeatherInfo(strings.Split(r.URL.Path, "/")[1])
+	info, err := weather.UseOpenWeatherAPI.GetWeatherInfo(strings.Split(r.URL.Path, "/")[1])
 	if err != nil {
 		http.Error(w, fmt.Sprintf("Error when trying to get weather info: %s", err), http.StatusBadRequest)
 		return
